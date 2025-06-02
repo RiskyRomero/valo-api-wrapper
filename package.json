@@ -1,7 +1,7 @@
 {
-  "name": "@tqman/valorant-api-client",
-  "description": "Type-safe API client for Valorant",
-  "version": "2.0.1",
+  "name": "valorant-api-wrapper",
+  "description": "Type-safe client and wrapper for the Valorant API",
+  "version": "1.0.0",
   "type": "module",
   "module": "dist/index.mjs",
   "main": "dist/index.cjs",
@@ -22,12 +22,23 @@
     "valorant",
     "api",
     "client",
-    "riot"
+    "riot",
+    "wrapper"
   ],
-  "author": "tanishqmanuja",
+  "author": "RiskyRomero",
+  "contributors": [
+    {
+      "name": "RiskyRomero",
+      "url": "https://github.com/RiskyRomero"
+    },
+    {
+      "name": "tanishqmanuja",
+      "url": "https://github.com/tanishqmanuja"
+    }
+  ],
   "license": "MIT",
-  "homepage": "https://github.com/tanishqmanuja/valorant-api-client#readme",
-  "repository": "github:tanishqmanuja/valorant-api-client",
+  "homepage": "https://github.com/RiskyRomero/valorant-api-wrapper#readme",
+  "repository": "github:RiskyRomero/valorant-api-wrapper",
   "packageManager": "bun@1.2.2",
   "scripts": {
     "build": "unbuild",
