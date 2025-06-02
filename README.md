@@ -1,28 +1,21 @@
-![Logo](https://raw.github.com/tanishqmanuja/static/main/banners/vapic.png?maxAge=2592000)
+# VALORANT API WRAPPER
 
-# VAPIC //VALORANT API CLIENT
-
-![NPM Version](https://img.shields.io/npm/v/%40tqman%2Fvalorant-api-client?style=for-the-badge&color=%23ff6961)
-![NPM Downloads](https://img.shields.io/npm/dm/%40tqman%2Fvalorant-api-client?style=for-the-badge&color=%23ff6961)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/tanishqmanuja/valorant-api-client/ci.yaml?branch=main&style=for-the-badge&color=%23ff6961)
-![GitHub License](https://img.shields.io/github/license/tanishqmanuja/valorant-api-client?style=for-the-badge&color=%23ff6961)
-
-VAPIC is a type safe implementation of an api client for VALORANT. It includes functional wrapper to call all community known endpoints provided by [valorant-api-types](https://www.npmjs.com/package/valorant-api-types).
+Valorant API Wrapper is fork of tanishqmanuja's [valorant-api-client](https://www.npmjs.com/package/@tqman/valorant-api-client), this package is meant to extend it's available endpoints. I hope to cover all known endpoints provided by [valorant-api-types](https://www.npmjs.com/package/valorant-api-types) while also providing ease of use access for developers.
 
 ## 📦 Installation
 
-Install @tqman/valorant-api-client with npm, pnpm or bun
+Install valorant-api-wrapper with npm, pnpm or bun
 
 ```sh
-npm i @tqman/valorant-api-client@latest
+npm i valorant-api-wrapper@latest
 ```
 
 ```sh
-pnpm add @tqman/valorant-api-client@latest
+pnpm add valorant-api-wrapper@latest
 ```
 
 ```sh
-bun add @tqman/valorant-api-client@latest
+bun add valorant-api-wrapper@latest
 ```
 
 ## 📃 Usage
@@ -32,13 +25,10 @@ Check out the [examples](./examples) directory to get started with VAPIC.
 - Local Authentication Example: [vapic-local.ts](./examples/vapic-local.ts)
 - Remote Authentication Example: 🚧 Broken as of now ( Thanks to Rito ) 🚧
 
-## ❤️‍🔥 Infinite Thanks
+## ❤️‍🔥 Credits
 
+- [**@tanishqmanuja**](https://github.com/tanishqmanuja) for the original [valorant-api-client](https://github.com/tanishqmanuja/valorant-api-client) package
 - [**@techchrism**](https://github.com/techchrism) for [valorant-api-docs](https://github.com/techchrism/valorant-api-docs)
-
-## 🌿 Show your Support
-
-Give a ⭐️ if this project helped you!
 
 ## ⚖️ Disclaimer
 
