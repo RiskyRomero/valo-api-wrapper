@@ -1,21 +1,21 @@
-# VALORANT API WRAPPER
+# VALO API WRAPPER
 
-Valorant API Wrapper is fork of tanishqmanuja's [valorant-api-client](https://www.npmjs.com/package/@tqman/valorant-api-client), this package is meant to extend it's available endpoints. I hope to cover all known endpoints provided by [valorant-api-types](https://www.npmjs.com/package/valorant-api-types) while also providing ease of use access for developers.
+Valo API Wrapper is fork of tanishqmanuja's [valorant-api-client](https://www.npmjs.com/package/@tqman/valorant-api-client), this package is meant to extend it's available endpoints for Valorant. I hope to cover all known endpoints provided by [valorant-api-types](https://www.npmjs.com/package/valorant-api-types) while also providing ease of use access for developers.
 
 ## 📦 Installation
 
 Install valorant-api-wrapper with npm, pnpm or bun
 
 ```sh
-npm i valorant-api-wrapper@latest
+npm i valo-api-wrapper@latest
 ```
 
 ```sh
-pnpm add valorant-api-wrapper@latest
+pnpm add valo-api-wrapper@latest
 ```
 
 ```sh
-bun add valorant-api-wrapper@latest
+bun add valo-api-wrapper@latest
 ```
 
 ## 📃 Usage
