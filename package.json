@@ -1,5 +1,5 @@
 {
-  "name": "valorant-api-wrapper",
+  "name": "valo-api-wrapper",
   "description": "Type-safe client and wrapper for the Valorant API",
   "version": "1.0.0",
   "type": "module",
