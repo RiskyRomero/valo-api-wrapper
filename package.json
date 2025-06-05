@@ -1,7 +1,7 @@
 {
   "name": "valo-api-wrapper",
   "description": "Type-safe client and wrapper for the Valorant API",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "type": "module",
   "module": "dist/index.mjs",
   "main": "dist/index.cjs",
