@@ -52,50 +52,52 @@ const bonusOfferSchema = z.object({
   IsSeen: z.boolean(),
 });
 
+export const storefrontResponseSchema = z.object({
+  FeaturedBundle: z.object({
+    Bundle: bundleSchema,
+    Bundles: z.array(bundleSchema),
+    BundleRemainingDurationInSeconds: z.number(),
+  }),
+  SkinsPanelLayout: z.object({
+    SingleItemOffers: z.array(itemIDSchema),
+    SingleItemStoreOffers: z.array(offerSchema),
+    SingleItemOffersRemainingDurationInSeconds: z.number(),
+  }),
+  UpgradeCurrencyStore: z.object({
+    UpgradeCurrencyOffers: z.array(
+      z.object({
+        OfferID: weakUUIDSchema,
+        StorefrontItemID: itemIDSchema,
+        Offer: offerSchema,
+        DiscountedPercent: z.number(),
+      }),
+    ),
+  }),
+  AccessoryStore: z.object({
+    AccessoryStoreOffers: z.array(
+      z.object({
+        Offer: offerSchema,
+        ContractID: weakUUIDSchema,
+      }),
+    ),
+    AccessoryStoreRemainingDurationInSeconds: z.number(),
+    StorefrontID: weakUUIDSchema,
+  }),
+  BonusStore: z
+    .object({
+      BonusStoreOffers: z.array(bonusOfferSchema),
+      BonusStoreRemainingDurationInSeconds: z.number(),
+    })
+    .optional()
+    .describe("Night market"),
+});
+
 export default defineEndpoint({
   name: "Storefront",
   description: "Get the currently available items in the store",
   type: "pd",
   url: "store/v2/storefront/:puuid",
   responses: {
-    "200": z.object({
-      FeaturedBundle: z.object({
-        Bundle: bundleSchema,
-        Bundles: z.array(bundleSchema),
-        BundleRemainingDurationInSeconds: z.number(),
-      }),
-      SkinsPanelLayout: z.object({
-        SingleItemOffers: z.array(itemIDSchema),
-        SingleItemStoreOffers: z.array(offerSchema),
-        SingleItemOffersRemainingDurationInSeconds: z.number(),
-      }),
-      UpgradeCurrencyStore: z.object({
-        UpgradeCurrencyOffers: z.array(
-          z.object({
-            OfferID: weakUUIDSchema,
-            StorefrontItemID: itemIDSchema,
-            Offer: offerSchema,
-            DiscountedPercent: z.number(),
-          }),
-        ),
-      }),
-      AccessoryStore: z.object({
-        AccessoryStoreOffers: z.array(
-          z.object({
-            Offer: offerSchema,
-            ContractID: weakUUIDSchema,
-          }),
-        ),
-        AccessoryStoreRemainingDurationInSeconds: z.number(),
-        StorefrontID: weakUUIDSchema,
-      }),
-      BonusStore: z
-        .object({
-          BonusStoreOffers: z.array(bonusOfferSchema),
-          BonusStoreRemainingDurationInSeconds: z.number(),
-        })
-        .optional()
-        .describe("Night market"),
-    }),
+    "200": storefrontResponseSchema,
   },
 });

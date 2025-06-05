@@ -9,6 +9,27 @@ import {
 } from "../../common-types";
 import { defineEndpoint } from "../../schema";
 
+export const competitiveUpdatesResponseSchema = z.object({
+  Version: z.number(),
+  Subject: playerUUIDSchema,
+  Matches: z.array(
+    z.object({
+      MatchID: matchIDSchema,
+      MapID: mapIDSchema,
+      SeasonID: seasonIDSchema,
+      MatchStartTime: millisSchema,
+      TierAfterUpdate: z.number(),
+      TierBeforeUpdate: z.number(),
+      RankedRatingAfterUpdate: z.number(),
+      RankedRatingBeforeUpdate: z.number(),
+      RankedRatingEarned: z.number(),
+      RankedRatingPerformanceBonus: z.number(),
+      CompetitiveMovement: z.literal("MOVEMENT_UNKNOWN"),
+      AFKPenalty: z.number(),
+    }),
+  ),
+});
+
 export default defineEndpoint({
   name: "Competitive Updates",
   description: "Get recent games and how they changed ranking",
@@ -31,25 +52,6 @@ export default defineEndpoint({
       .describe("The queue to filter by. Defaults to all queues"),
   }),
   responses: {
-    "200": z.object({
-      Version: z.number(),
-      Subject: playerUUIDSchema,
-      Matches: z.array(
-        z.object({
-          MatchID: matchIDSchema,
-          MapID: mapIDSchema,
-          SeasonID: seasonIDSchema,
-          MatchStartTime: millisSchema,
-          TierAfterUpdate: z.number(),
-          TierBeforeUpdate: z.number(),
-          RankedRatingAfterUpdate: z.number(),
-          RankedRatingBeforeUpdate: z.number(),
-          RankedRatingEarned: z.number(),
-          RankedRatingPerformanceBonus: z.number(),
-          CompetitiveMovement: z.literal("MOVEMENT_UNKNOWN"),
-          AFKPenalty: z.number(),
-        }),
-      ),
-    }),
+    "200": competitiveUpdatesResponseSchema,
   },
 });

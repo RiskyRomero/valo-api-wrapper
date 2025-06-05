@@ -12,6 +12,30 @@ const progressSchema = z.object({
   XP: z.number(),
 });
 
+export const accountXpResponseSchema = z.object({
+  Version: z.number(),
+  Subject: playerUUIDSchema,
+  Progress: progressSchema,
+  History: z.array(
+    z.object({
+      ID: matchIDSchema,
+      MatchStart: dateSchema,
+      StartProgress: progressSchema,
+      EndProgress: progressSchema,
+      XPDelta: z.number(),
+      XPSources: z.array(
+        z.object({
+          ID: z.enum(["time-played", "match-win", "first-win-of-the-day"]),
+          Amount: z.number(),
+        }),
+      ),
+      XPMultipliers: z.array(z.unknown()),
+    }),
+  ),
+  LastTimeGrantedFirstWin: dateSchema,
+  NextTimeFirstWinAvailable: dateSchema,
+});
+
 export default defineEndpoint({
   name: "Account XP",
   description:
@@ -19,28 +43,6 @@ export default defineEndpoint({
   type: "pd",
   url: "account-xp/v1/players/:puuid",
   responses: {
-    "200": z.object({
-      Version: z.number(),
-      Subject: playerUUIDSchema,
-      Progress: progressSchema,
-      History: z.array(
-        z.object({
-          ID: matchIDSchema,
-          MatchStart: dateSchema,
-          StartProgress: progressSchema,
-          EndProgress: progressSchema,
-          XPDelta: z.number(),
-          XPSources: z.array(
-            z.object({
-              ID: z.enum(["time-played", "match-win", "first-win-of-the-day"]),
-              Amount: z.number(),
-            }),
-          ),
-          XPMultipliers: z.array(z.unknown()),
-        }),
-      ),
-      LastTimeGrantedFirstWin: dateSchema,
-      NextTimeFirstWinAvailable: dateSchema,
-    }),
+    "200": accountXpResponseSchema,
   },
 });

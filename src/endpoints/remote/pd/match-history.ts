@@ -9,6 +9,20 @@ import {
 
 import { defineEndpoint } from "../../schema";
 
+export const matchHistoryResponseSchema = z.object({
+  Subject: playerUUIDSchema,
+  BeginIndex: z.number(),
+  EndIndex: z.number(),
+  Total: z.number(),
+  History: z.array(
+    z.object({
+      MatchID: matchIDSchema,
+      GameStartTime: millisSchema,
+      QueueID: queueIDSchema,
+    }),
+  ),
+});
+
 export default defineEndpoint({
   name: "Match History",
   description: "Get the match history for the given player",
@@ -29,18 +43,6 @@ export default defineEndpoint({
       .describe("The queue to filter by. Defaults to all queues"),
   }),
   responses: {
-    "200": z.object({
-      Subject: playerUUIDSchema,
-      BeginIndex: z.number(),
-      EndIndex: z.number(),
-      Total: z.number(),
-      History: z.array(
-        z.object({
-          MatchID: matchIDSchema,
-          GameStartTime: millisSchema,
-          QueueID: queueIDSchema,
-        }),
-      ),
-    }),
+    "200": matchHistoryResponseSchema,
   },
 });
