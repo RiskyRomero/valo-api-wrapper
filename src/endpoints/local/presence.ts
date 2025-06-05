@@ -85,6 +85,43 @@ export const valorantPresenceSchema = z.object({
   isIdle: z.boolean(),
 });
 
+export const PresenceResponseSchema = z.object({
+  presences: z.array(
+    z.object({
+      actor: z.unknown().nullable(),
+      basic: z.string(),
+      details: z.unknown().nullable(),
+      game_name: z.string(),
+      game_tag: z.string(),
+      location: z.unknown().nullable(),
+      msg: z.unknown().nullable(),
+      name: z.string(),
+      patchline: z.unknown().nullable(),
+      pid: z.string(),
+      platform: z.unknown().nullable(),
+      private: z
+        .string()
+        .nullable()
+        .transform((val) => {
+          if (val === null) return null;
+          try {
+            return leagueOfLegendsPresenceSchema.parse(JSON.parse(val));
+          } catch (ignored) {}
+
+          return valorantPresenceSchema.parse(JSON.parse(atob(val)));
+        }),
+      privateJwt: z.unknown().nullable(),
+      product: z.enum(["valorant", "league_of_legends"]),
+      puuid: playerUUIDSchema,
+      region: z.string(),
+      resource: z.string(),
+      state: z.enum(["mobile", "dnd", "away", "chat"]),
+      summary: z.string(),
+      time: millisSchema,
+    }),
+  ),
+});
+
 export default defineEndpoint({
   name: "Presence",
   description: [
@@ -94,41 +131,6 @@ export default defineEndpoint({
   type: "local",
   url: "chat/v4/presences",
   responses: {
-    "200": z.object({
-      presences: z.array(
-        z.object({
-          actor: z.unknown().nullable(),
-          basic: z.string(),
-          details: z.unknown().nullable(),
-          game_name: z.string(),
-          game_tag: z.string(),
-          location: z.unknown().nullable(),
-          msg: z.unknown().nullable(),
-          name: z.string(),
-          patchline: z.unknown().nullable(),
-          pid: z.string(),
-          platform: z.unknown().nullable(),
-          private: z
-            .string()
-            .nullable()
-            .transform((val) => {
-              if (val === null) return null;
-              try {
-                return leagueOfLegendsPresenceSchema.parse(JSON.parse(val));
-              } catch (ignored) {}
-
-              return valorantPresenceSchema.parse(JSON.parse(atob(val)));
-            }),
-          privateJwt: z.unknown().nullable(),
-          product: z.enum(["valorant", "league_of_legends"]),
-          puuid: playerUUIDSchema,
-          region: z.string(),
-          resource: z.string(),
-          state: z.enum(["mobile", "dnd", "away", "chat"]),
-          summary: z.string(),
-          time: millisSchema,
-        }),
-      ),
-    }),
+    "200": PresenceResponseSchema,
   },
 });

@@ -2,6 +2,27 @@ import { z } from "zod";
 
 import { defineEndpoint } from "../schema";
 
+export const SessionsResponseSchema = z.record(
+  z.string().describe("Session ID"),
+  z.object({
+    exitCode: z.number(),
+    exitReason: z.null(),
+    isInternal: z.boolean(),
+    launchConfiguration: z.object({
+      arguments: z.array(z.string()),
+      executable: z.string(),
+      locale: z.string().nullable(),
+      voiceLocale: z.null(),
+      workingDirectory: z.string(),
+    }),
+    patchlineFullName: z.enum(["VALORANT", "riot_client"]),
+    patchlineId: z.enum(["", "live", "pbe"]),
+    phase: z.string(),
+    productId: z.enum(["valorant", "riot_client"]),
+    version: z.string(),
+  }),
+);
+
 export default defineEndpoint({
   name: "Sessions",
   description: [
@@ -11,25 +32,6 @@ export default defineEndpoint({
   type: "local",
   url: "product-session/v1/external-sessions",
   responses: {
-    "200": z.record(
-      z.string().describe("Session ID"),
-      z.object({
-        exitCode: z.number(),
-        exitReason: z.null(),
-        isInternal: z.boolean(),
-        launchConfiguration: z.object({
-          arguments: z.array(z.string()),
-          executable: z.string(),
-          locale: z.string().nullable(),
-          voiceLocale: z.null(),
-          workingDirectory: z.string(),
-        }),
-        patchlineFullName: z.enum(["VALORANT", "riot_client"]),
-        patchlineId: z.enum(["", "live", "pbe"]),
-        phase: z.string(),
-        productId: z.enum(["valorant", "riot_client"]),
-        version: z.string(),
-      }),
-    ),
+    "200": SessionsResponseSchema,
   },
 });
