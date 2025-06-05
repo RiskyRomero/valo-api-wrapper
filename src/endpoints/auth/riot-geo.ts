@@ -2,6 +2,16 @@ import { z } from "zod";
 
 import { defineEndpoint } from "../schema";
 
+export const RiotGeoResponseSchema = z.object({
+  token: z.string(),
+  affinities: z
+    .object({
+      pbe: z.string(),
+      live: z.string(),
+    })
+    .describe("The region IDs for PBE and live servers"),
+})
+
 export default defineEndpoint({
   name: "Riot Geo",
   description:
@@ -14,14 +24,6 @@ export default defineEndpoint({
     id_token: z.string().describe("The ID token"),
   }),
   responses: {
-    "200": z.object({
-      token: z.string(),
-      affinities: z
-        .object({
-          pbe: z.string(),
-          live: z.string(),
-        })
-        .describe("The region IDs for PBE and live servers"),
-    }),
+    "200": RiotGeoResponseSchema
   },
 });

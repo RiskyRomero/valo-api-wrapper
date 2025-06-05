@@ -2,6 +2,8 @@ import { z } from "zod";
 
 import { defineEndpoint } from "../schema";
 
+export const PasTokenResponseSchema = z.string().describe("The PAS token");
+
 export default defineEndpoint({
   name: "PAS Token",
   description:
@@ -10,6 +12,6 @@ export default defineEndpoint({
   url: "https://riot-geo.pas.si.riotgames.com/pas/v1/service/chat",
   requirements: ["ACCESS_TOKEN"],
   responses: {
-    "200": z.string().describe("The PAS token"),
+    "200": PasTokenResponseSchema
   },
 });

@@ -2,6 +2,10 @@ import { z } from "zod";
 
 import { defineEndpoint } from "../schema";
 
+export const EntitlementsTokenResponse = z.object({
+  entitlements_token: z.string(),
+});
+
 export default defineEndpoint({
   name: "Entitlements Token",
   description: "Get entitlement for remote requests with a token",
@@ -13,8 +17,6 @@ export default defineEndpoint({
     "Content-Type": "application/json",
   },
   responses: {
-    "200": z.object({
-      entitlements_token: z.string(),
-    }),
+    "200": EntitlementsTokenResponse
   },
 });

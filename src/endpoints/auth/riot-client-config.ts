@@ -2,6 +2,25 @@ import { z } from "zod";
 
 import { defineEndpoint } from "../schema";
 
+export const RiotClientConfigResponseSchema = z.intersection(
+  z.object({
+    "chat.affinities": z
+      .record(
+        z.string().describe("Affinity ID"),
+        z.string().describe("Chat Server Host"),
+      )
+      .describe("Mapping of affinity ID to chat server host"),
+    "chat.affinity_domains": z
+      .record(
+        z.string().describe("Affinity ID"),
+        z.string().describe("Affinity Domain"),
+      )
+      .describe("Mapping of affinity ID to affinity domain"),
+    "chat.port": z.number().describe("Chat server port"),
+  }),
+  z.record(z.string(), z.unknown()),
+);
+
 export default defineEndpoint({
   name: "Riot Client Config",
   description:
@@ -10,23 +29,6 @@ export default defineEndpoint({
   url: "https://clientconfig.rpg.riotgames.com/api/v1/config/player?app=Riot%20Client",
   requirements: ["ACCESS_TOKEN", "ENTITLEMENTS_TOKEN"],
   responses: {
-    "200": z.intersection(
-      z.object({
-        "chat.affinities": z
-          .record(
-            z.string().describe("Affinity ID"),
-            z.string().describe("Chat Server Host"),
-          )
-          .describe("Mapping of affinity ID to chat server host"),
-        "chat.affinity_domains": z
-          .record(
-            z.string().describe("Affinity ID"),
-            z.string().describe("Affinity Domain"),
-          )
-          .describe("Mapping of affinity ID to affinity domain"),
-        "chat.port": z.number().describe("Chat server port"),
-      }),
-      z.record(z.string(), z.unknown()),
-    ),
+    "200": RiotClientConfigResponseSchema
   },
 });

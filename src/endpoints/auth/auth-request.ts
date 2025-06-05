@@ -2,6 +2,39 @@ import { z } from "zod";
 
 import { defineEndpoint } from "../schema";
 
+export const AuthRequestResponseSchema = z.discriminatedUnion("type", [
+  z.object({
+    type: z.literal("success"),
+    success: z.object({
+      login_token: z.string(),
+      redirect_url: z.string(),
+      is_console_link_session: z.boolean(),
+      auth_method: z.literal("riot_identity"), //TODO find other auth methods (likely to be google/facebook/others)
+      puuid: z.string(),
+    }),
+    country: z.string(),
+    platform: z.string(),
+  }),
+  z.object({
+    type: z.literal("multifactor"),
+    multifactor: z.object({
+      method: z.literal("email"),
+      methods: z.array(z.literal("email")),
+      email: z.string().describe("partially-obscured email address"),
+      mode: z.literal("auth"),
+      auth_method: z.literal("riot_identity"),
+    }),
+    country: z.string(),
+    platform: z.string(),
+    error: z
+      .literal("invalid_code")
+      .optional()
+      .describe(
+        "The MFA request seems to still give an HTTP response code of 200 for invalid codes but attaches this error property",
+      ),
+  }),
+]);
+
 export default defineEndpoint({
   name: "Auth Request",
   description: [
@@ -34,37 +67,6 @@ export default defineEndpoint({
     }),
   }),
   responses: {
-    "200": z.discriminatedUnion("type", [
-      z.object({
-        type: z.literal("success"),
-        success: z.object({
-          login_token: z.string(),
-          redirect_url: z.string(),
-          is_console_link_session: z.boolean(),
-          auth_method: z.literal("riot_identity"), //TODO find other auth methods (likely to be google/facebook/others)
-          puuid: z.string(),
-        }),
-        country: z.string(),
-        platform: z.string(),
-      }),
-      z.object({
-        type: z.literal("multifactor"),
-        multifactor: z.object({
-          method: z.literal("email"),
-          methods: z.array(z.literal("email")),
-          email: z.string().describe("partially-obscured email address"),
-          mode: z.literal("auth"),
-          auth_method: z.literal("riot_identity"),
-        }),
-        country: z.string(),
-        platform: z.string(),
-        error: z
-          .literal("invalid_code")
-          .optional()
-          .describe(
-            "The MFA request seems to still give an HTTP response code of 200 for invalid codes but attaches this error property",
-          ),
-      }),
-    ]),
+    "200": AuthRequestResponseSchema,
   },
 });
