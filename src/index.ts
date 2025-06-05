@@ -6,3 +6,5 @@ export * from "./file-parsers/logfile";
 export * from "./helpers";
 
 export * from "./providers";
+
+export * from "./types";
