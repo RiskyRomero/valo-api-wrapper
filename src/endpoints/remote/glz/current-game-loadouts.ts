@@ -18,6 +18,6 @@ export default defineEndpoint({
   type: "glz",
   url: "core-game/v1/matches/:currentGameMatchId/loadouts",
   responses: {
-    "200": CurrentGameLoadoutsResponseSchema
+    "200": CurrentGameLoadoutsResponseSchema,
   },
 });

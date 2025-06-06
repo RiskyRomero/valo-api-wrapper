@@ -6,7 +6,7 @@ import { defineEndpoint } from "../../schema";
 export const PreGameLoadoutsResponseSchema = z.object({
   Loadouts: z.array(loadoutsSchema),
   LoadoutsValid: z.boolean(),
-})
+});
 
 export default defineEndpoint({
   name: "PreGame Loadouts",
@@ -14,6 +14,6 @@ export default defineEndpoint({
   type: "glz",
   url: "pregame/v1/matches/:pregameMatchId/loadouts",
   responses: {
-    "200": PreGameLoadoutsResponseSchema
+    "200": PreGameLoadoutsResponseSchema,
   },
 });

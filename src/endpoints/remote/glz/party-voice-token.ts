@@ -5,7 +5,7 @@ import { defineEndpoint } from "../../schema";
 export const PartyVoiceTokenResponseSchema = z.object({
   Token: z.string(),
   Room: z.string(),
-})
+});
 
 export default defineEndpoint({
   name: "Party Voice Token",
@@ -13,6 +13,6 @@ export default defineEndpoint({
   type: "glz",
   url: "parties/v1/parties/:partyId/voicetoken",
   responses: {
-    "200": PartyVoiceTokenResponseSchema
+    "200": PartyVoiceTokenResponseSchema,
   },
 });

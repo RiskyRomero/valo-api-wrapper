@@ -3,11 +3,13 @@ import { z } from "zod";
 import { partyPlayerSchema } from "../../common-types";
 import { defineEndpoint } from "../../schema";
 
-export const PartyJoinByCodeResponseSchema = partyPlayerSchema || z.object({
-  httpStatus: z.literal(404),
-  errorCode: z.literal("ERR_MISSING_INVITE_CODE_MAPPING"),
-  message: z.literal("No PartyID <--> InviteCode mapping found"),
-});
+export const PartyJoinByCodeResponseSchema =
+  partyPlayerSchema ||
+  z.object({
+    httpStatus: z.literal(404),
+    errorCode: z.literal("ERR_MISSING_INVITE_CODE_MAPPING"),
+    message: z.literal("No PartyID <--> InviteCode mapping found"),
+  });
 
 export default defineEndpoint({
   name: "Party Join By Code",

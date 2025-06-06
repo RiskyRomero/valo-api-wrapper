@@ -15,6 +15,6 @@ export default defineEndpoint({
   type: "glz",
   url: "pregame/v1/players/:puuid",
   responses: {
-    "200": PreGamePlayerResponseSchema
+    "200": PreGamePlayerResponseSchema,
   },
 });

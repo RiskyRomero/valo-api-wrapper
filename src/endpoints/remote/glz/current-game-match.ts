@@ -63,7 +63,7 @@ export const CurrentGameMatchResponseSchema = z.object({
     }),
   ),
   MatchmakingData: z.null(),
-})
+});
 
 export default defineEndpoint({
   name: "Current Game Match",
@@ -71,6 +71,6 @@ export default defineEndpoint({
   type: "glz",
   url: "core-game/v1/matches/:currentGameMatchId",
   responses: {
-    "200": CurrentGameMatchResponseSchema
+    "200": CurrentGameMatchResponseSchema,
   },
 });

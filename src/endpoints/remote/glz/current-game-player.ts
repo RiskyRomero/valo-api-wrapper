@@ -15,6 +15,6 @@ export default defineEndpoint({
   type: "glz",
   url: "core-game/v1/players/:puuid",
   responses: {
-    "200": CurrentGamePlayerResponseSchema
+    "200": CurrentGamePlayerResponseSchema,
   },
 });

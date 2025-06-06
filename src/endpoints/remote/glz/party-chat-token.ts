@@ -13,6 +13,6 @@ export default defineEndpoint({
   type: "glz",
   url: "parties/v1/parties/:partyId/muctoken",
   responses: {
-    "200": PartyChatTokenResponseSchema
+    "200": PartyChatTokenResponseSchema,
   },
 });

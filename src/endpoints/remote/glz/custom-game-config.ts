@@ -67,6 +67,6 @@ export default defineEndpoint({
   type: "glz",
   url: "parties/v1/parties/customgameconfigs",
   responses: {
-    "200": CustomGameConfigResponseSchema
+    "200": CustomGameConfigResponseSchema,
   },
 });
