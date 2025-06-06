@@ -28,6 +28,15 @@ import type {
 } from "./endpoints/local/presence";
 import type { SessionsResponseSchema } from "./endpoints/local/sessions";
 import type { SettingsResponseSchema } from "./endpoints/local/settings";
+import type { CurrentGameLoadoutsResponseSchema } from "./endpoints/remote/glz/current-game-loadouts";
+import type { CurrentGameMatchResponseSchema } from "./endpoints/remote/glz/current-game-match";
+import type { CurrentGamePlayerResponseSchema } from "./endpoints/remote/glz/current-game-player";
+import type { CustomGameConfigResponseSchema } from "./endpoints/remote/glz/custom-game-config";
+import type { PartyChatTokenResponseSchema } from "./endpoints/remote/glz/party-chat-token";
+import type { PartyJoinByCodeResponseSchema } from "./endpoints/remote/glz/party-join-by-code";
+import type { PartyVoiceTokenResponseSchema } from "./endpoints/remote/glz/party-voice-token";
+import type { PreGameLoadoutsResponseSchema } from "./endpoints/remote/glz/pregame-loadouts";
+import type { PreGamePlayerResponseSchema } from "./endpoints/remote/glz/pregame-player";
 import type { accountXpResponseSchema } from "./endpoints/remote/pd/account-xp";
 import type { competitiveUpdatesResponseSchema } from "./endpoints/remote/pd/competitive-updates";
 import type { configResponseSchema } from "./endpoints/remote/pd/config";
@@ -38,15 +47,6 @@ import type { ownedItemsResponseSchema } from "./endpoints/remote/pd/owned-items
 import type { pricesResponseSchema } from "./endpoints/remote/pd/prices";
 import type { storefrontResponseSchema } from "./endpoints/remote/pd/storefront";
 import type { walletResponseSchema } from "./endpoints/remote/pd/wallet";
-import type { CurrentGameLoadoutsResponseSchema } from "./endpoints/remote/glz/current-game-loadouts";
-import type { CurrentGameMatchResponseSchema } from "./endpoints/remote/glz/current-game-match";
-import type { CurrentGamePlayerResponseSchema } from "./endpoints/remote/glz/current-game-player";
-import type { CustomGameConfigResponseSchema } from "./endpoints/remote/glz/custom-game-config";
-import type { PartyChatTokenResponseSchema } from "./endpoints/remote/glz/party-chat-token";
-import type { PartyJoinByCodeResponseSchema } from "./endpoints/remote/glz/party-join-by-code";
-import type { PartyVoiceTokenResponseSchema } from "./endpoints/remote/glz/party-voice-token";
-import type { PreGameLoadoutsResponseSchema } from "./endpoints/remote/glz/pregame-loadouts";
-import type { PreGamePlayerResponseSchema } from "./endpoints/remote/glz/pregame-player";
 
 // AUTH //
 export type AuthRequestResponse = z.infer<typeof AuthRequestResponseSchema>;
@@ -93,24 +93,40 @@ export type SettingsResponse = z.infer<typeof SettingsResponseSchema>;
 
 /*  glz */
 export type ChangeQueueResponse = z.infer<typeof partySchema>;
-export type CurrentGameLoadoutsResponse = z.infer<typeof CurrentGameLoadoutsResponseSchema>;
-export type CurrentGameMatchResponse = z.infer<typeof CurrentGameMatchResponseSchema>;
-export type CurrentGamePlayerResponse = z.infer<typeof CurrentGamePlayerResponseSchema>;
-export type CustomGameConfigResponse = z.infer<typeof CustomGameConfigResponseSchema>;
+export type CurrentGameLoadoutsResponse = z.infer<
+  typeof CurrentGameLoadoutsResponseSchema
+>;
+export type CurrentGameMatchResponse = z.infer<
+  typeof CurrentGameMatchResponseSchema
+>;
+export type CurrentGamePlayerResponse = z.infer<
+  typeof CurrentGamePlayerResponseSchema
+>;
+export type CustomGameConfigResponse = z.infer<
+  typeof CustomGameConfigResponseSchema
+>;
 export type EnterMatchmakingQueueResponse = z.infer<typeof partySchema>;
 export type LeaveMatchmakingQueueResponse = z.infer<typeof partySchema>;
-export type LockCharacterResponse = z.infer<typeof pregameMatchSchema>
-export type PartyChatTokenResponse = z.infer<typeof PartyChatTokenResponseSchema>;
+export type LockCharacterResponse = z.infer<typeof pregameMatchSchema>;
+export type PartyChatTokenResponse = z.infer<
+  typeof PartyChatTokenResponseSchema
+>;
 export type PartyDeclineResponse = z.infer<typeof partySchema>;
 export type PartyDisableCodeResponse = z.infer<typeof partySchema>;
 export type PartyGenerateCodeResponse = z.infer<typeof partySchema>;
 export type PartyInviteResponse = z.infer<typeof partySchema>;
-export type PartyJoinByCodeResponse = z.infer<typeof PartyJoinByCodeResponseSchema>;
+export type PartyJoinByCodeResponse = z.infer<
+  typeof PartyJoinByCodeResponseSchema
+>;
 export type PartyPlayerResponse = z.infer<typeof partyPlayerSchema>;
 export type PartySetMembersReadyResponse = z.infer<typeof partySchema>;
-export type PartyVoiceTokenResponse = z.infer<typeof PartyVoiceTokenResponseSchema>;
+export type PartyVoiceTokenResponse = z.infer<
+  typeof PartyVoiceTokenResponseSchema
+>;
 export type PartyResponse = z.infer<typeof partySchema>;
-export type PreGameLoadoutsResponse = z.infer<typeof PreGameLoadoutsResponseSchema>;
+export type PreGameLoadoutsResponse = z.infer<
+  typeof PreGameLoadoutsResponseSchema
+>;
 export type PreGameMatchResponse = z.infer<typeof pregameMatchSchema>;
 export type PreGamePlayerResponse = z.infer<typeof PreGamePlayerResponseSchema>;
 export type RefreshCompetitiveTierResponse = z.infer<typeof partySchema>;

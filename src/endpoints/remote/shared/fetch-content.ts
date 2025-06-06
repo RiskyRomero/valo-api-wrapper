@@ -32,6 +32,6 @@ export default defineEndpoint({
   type: "shared",
   url: "content-service/v3/content",
   responses: {
-    "200": FetchContentResponseSchema
+    "200": FetchContentResponseSchema,
   },
 });
