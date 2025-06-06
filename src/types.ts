@@ -47,6 +47,7 @@ import type { ownedItemsResponseSchema } from "./endpoints/remote/pd/owned-items
 import type { pricesResponseSchema } from "./endpoints/remote/pd/prices";
 import type { storefrontResponseSchema } from "./endpoints/remote/pd/storefront";
 import type { walletResponseSchema } from "./endpoints/remote/pd/wallet";
+import type { FetchContentResponseSchema } from "./endpoints/remote/shared/fetch-content";
 
 // AUTH //
 export type AuthRequestResponse = z.infer<typeof AuthRequestResponseSchema>;
@@ -153,4 +154,5 @@ export type PricesResponse = z.infer<typeof pricesResponseSchema>;
 export type StorefrontResponse = z.infer<typeof storefrontResponseSchema>;
 export type WalletResponse = z.infer<typeof walletResponseSchema>;
 
-/* shared (todo) */
+/* shared */
+export type FetchContentResponse = z.infer<typeof FetchContentResponseSchema>;
