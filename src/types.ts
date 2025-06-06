@@ -1,4 +1,4 @@
-import type { z } from "zod";
+import { z } from "zod";
 
 import type { AuthRequestResponseSchema } from "./endpoints/auth/auth-request";
 import type { PasTokenResponseSchema } from "./endpoints/auth/pas-token";
@@ -9,6 +9,9 @@ import type {
   chatMessagesSchema,
   contractsResponse,
   conversationsSchema,
+  partyPlayerSchema,
+  partySchema,
+  pregameMatchSchema,
 } from "./endpoints/common-types";
 import type { AccountAliasResponseSchema } from "./endpoints/local/account-alias";
 import type { ChatParticipantsResponseSchema } from "./endpoints/local/chat-participants";
@@ -35,6 +38,15 @@ import type { ownedItemsResponseSchema } from "./endpoints/remote/pd/owned-items
 import type { pricesResponseSchema } from "./endpoints/remote/pd/prices";
 import type { storefrontResponseSchema } from "./endpoints/remote/pd/storefront";
 import type { walletResponseSchema } from "./endpoints/remote/pd/wallet";
+import type { CurrentGameLoadoutsResponseSchema } from "./endpoints/remote/glz/current-game-loadouts";
+import type { CurrentGameMatchResponseSchema } from "./endpoints/remote/glz/current-game-match";
+import type { CurrentGamePlayerResponseSchema } from "./endpoints/remote/glz/current-game-player";
+import type { CustomGameConfigResponseSchema } from "./endpoints/remote/glz/custom-game-config";
+import type { PartyChatTokenResponseSchema } from "./endpoints/remote/glz/party-chat-token";
+import type { PartyJoinByCodeResponseSchema } from "./endpoints/remote/glz/party-join-by-code";
+import type { PartyVoiceTokenResponseSchema } from "./endpoints/remote/glz/party-voice-token";
+import type { PreGameLoadoutsResponseSchema } from "./endpoints/remote/glz/pregame-loadouts";
+import type { PreGamePlayerResponseSchema } from "./endpoints/remote/glz/pregame-player";
 
 // AUTH //
 export type AuthRequestResponse = z.infer<typeof AuthRequestResponseSchema>;
@@ -49,7 +61,6 @@ export type RiotClientConfigResponse = z.infer<
 export type RiotGeoResponse = z.infer<typeof RiotGeoResponseSchema>;
 
 // LOCAL //
-/* TODO: FILL WITH LOCAL ENDPOINTS */
 export type AccountAliasResponse = z.infer<typeof AccountAliasResponseSchema>;
 export type AllChatInfoResponse = z.infer<typeof conversationsSchema>;
 export type ChatHistoryResponse = z.infer<typeof chatMessagesSchema>;
@@ -80,7 +91,35 @@ export type SettingsResponse = z.infer<typeof SettingsResponseSchema>;
 
 // REMOTE //
 
-/*  glz (todo) */
+/*  glz */
+export type ChangeQueueResponse = z.infer<typeof partySchema>;
+export type CurrentGameLoadoutsResponse = z.infer<typeof CurrentGameLoadoutsResponseSchema>;
+export type CurrentGameMatchResponse = z.infer<typeof CurrentGameMatchResponseSchema>;
+export type CurrentGamePlayerResponse = z.infer<typeof CurrentGamePlayerResponseSchema>;
+export type CustomGameConfigResponse = z.infer<typeof CustomGameConfigResponseSchema>;
+export type EnterMatchmakingQueueResponse = z.infer<typeof partySchema>;
+export type LeaveMatchmakingQueueResponse = z.infer<typeof partySchema>;
+export type LockCharacterResponse = z.infer<typeof pregameMatchSchema>
+export type PartyChatTokenResponse = z.infer<typeof PartyChatTokenResponseSchema>;
+export type PartyDeclineResponse = z.infer<typeof partySchema>;
+export type PartyDisableCodeResponse = z.infer<typeof partySchema>;
+export type PartyGenerateCodeResponse = z.infer<typeof partySchema>;
+export type PartyInviteResponse = z.infer<typeof partySchema>;
+export type PartyJoinByCodeResponse = z.infer<typeof PartyJoinByCodeResponseSchema>;
+export type PartyPlayerResponse = z.infer<typeof partyPlayerSchema>;
+export type PartySetMembersReadyResponse = z.infer<typeof partySchema>;
+export type PartyVoiceTokenResponse = z.infer<typeof PartyVoiceTokenResponseSchema>;
+export type PartyResponse = z.infer<typeof partySchema>;
+export type PreGameLoadoutsResponse = z.infer<typeof PreGameLoadoutsResponseSchema>;
+export type PreGameMatchResponse = z.infer<typeof pregameMatchSchema>;
+export type PreGamePlayerResponse = z.infer<typeof PreGamePlayerResponseSchema>;
+export type RefreshCompetitiveTierResponse = z.infer<typeof partySchema>;
+export type RefreshPingsResponse = z.infer<typeof partySchema>;
+export type RefreshPlayerIdentityResponse = z.infer<typeof partySchema>;
+export type SelectCharacterResponse = z.infer<typeof pregameMatchSchema>;
+export type SetCustomGameSettingsResponse = z.infer<typeof partySchema>;
+export type SetPartyAccessibilityResponse = z.infer<typeof partySchema>;
+export type StartCustomGameResponse = z.infer<typeof partySchema>;
 
 /* pd */
 export type AccountXpResponse = z.infer<typeof accountXpResponseSchema>;
